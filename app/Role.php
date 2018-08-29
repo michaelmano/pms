@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     /**
-     * A role can have many permissions.
+     * The attributes that are mass assignable.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     * @var array
      */
-    public function Permissions()
-    {
-        return $this->hasMany(Permission::class);
-    }
+    protected $fillable = [
+        'title',
+    ];
 
     /**
      * A role belongs to many users.
