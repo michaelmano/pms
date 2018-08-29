@@ -4,8 +4,8 @@ namespace Tests\Unit;
 
 use App\Role;
 use App\User;
-use Tests\TestCase;
 use Illuminate\Database\QueryException;
+use Tests\TestCase;
 
 class UserTest extends TestCase
 {
@@ -29,8 +29,8 @@ class UserTest extends TestCase
     public function a_user_can_have_many_roles()
     {
         $user = factory(User::class)->create();
-        $role_one = factory(Role::class)->create();
-        $role_two = factory(Role::class)->create();
+        $role_one = Role::find(1);
+        $role_two = Role::find(2);
 
         $user->roles()->attach($role_one);
 
@@ -45,7 +45,7 @@ class UserTest extends TestCase
     public function a_user_can_have_many_roles_but_they_have_to_be_unique()
     {
         $user = factory(User::class)->create();
-        $role = factory(Role::class)->create();
+        $role = Role::find(1);
 
         try {
             $user->roles()->attach($role);
