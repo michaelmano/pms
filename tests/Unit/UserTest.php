@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Database\QueryException;
 
 class UserTest extends TestCase
 {
@@ -27,9 +28,30 @@ class UserTest extends TestCase
     public function a_user_can_have_many_roles()
     {
         $user = factory(\App\User::class)->create();
-        $role = factory(\App\Role::class)->create();
-        $user->attach($role);
+        $role_one = factory(\App\Role::class)->create();
+        $role_two = factory(\App\Role::class)->create();
 
-        $this->assertNotEmpty($user->roles);
+        $user->roles()->attach($role_one);
+
+        $this->assertEquals($user->roles()->count(), 1);
+
+        $user->roles()->attach($role_two);
+
+        $this->assertEquals($user->roles()->count(), 2);
+    }
+
+    /** @test */
+    public function a_user_can_have_many_roles_but_they_have_to_be_unique()
+    {
+
+        $user = factory(\App\User::class)->create();
+        $role = factory(\App\Role::class)->create();
+
+        try {
+            $user->roles()->attach($role);
+            $user->roles()->attach($role);
+        } catch(QueryException $e) {}
+
+        $this->assertEquals($user->roles()->count(), 1);
     }
 }
