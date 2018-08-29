@@ -32,6 +32,13 @@ class User extends Authenticatable
     ];
 
     /**
+     * The eloquent events that should be dispatched.
+     */
+    protected $dispatchesEvents = [
+        'created' => Events\User\Created::class,
+    ];
+
+    /**
      * The roles that the current user has.
      *
      * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
