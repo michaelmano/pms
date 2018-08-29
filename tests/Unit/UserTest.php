@@ -2,10 +2,9 @@
 
 namespace Tests\Unit;
 
-use App\User;
 use App\Role;
+use App\User;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Database\QueryException;
 
 class UserTest extends TestCase
@@ -45,14 +44,14 @@ class UserTest extends TestCase
     /** @test */
     public function a_user_can_have_many_roles_but_they_have_to_be_unique()
     {
-
         $user = factory(User::class)->create();
         $role = factory(Role::class)->create();
 
         try {
             $user->roles()->attach($role);
             $user->roles()->attach($role);
-        } catch(QueryException $e) {}
+        } catch (QueryException $e) {
+        }
 
         $this->assertEquals($user->roles()->count(), 1);
     }
