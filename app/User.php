@@ -47,4 +47,18 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
+    /**
+     * An easy way to check if the user has a certain role.
+     * @param String $title
+     *
+     * @return Boolean
+     */
+    public function hasRole(String $title)
+    {
+        return $this
+            ->roles()
+            ->get()
+            ->contains('title', $title);
+    }
 }

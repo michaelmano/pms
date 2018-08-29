@@ -11,7 +11,8 @@ class UserEventSubscriber
      */
     public function onUserCreated($event)
     {
-        $event->user->roles()->attach(Role::find(1));
+        $employee_role = Role::where('title', 'employee')->firstOrFail();
+        $event->user->roles()->attach($employee_role);
     }
 
     /**

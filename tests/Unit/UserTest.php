@@ -19,25 +19,21 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function a_user_starts_with_no_roles()
+    public function a_user_starts_with_the_employee_role()
     {
         $user = factory(User::class)->create();
-        $this->assertEmpty($user->roles);
+
+        $this->assertTrue($user->hasRole('employee'));
     }
 
     /** @test */
     public function a_user_can_have_many_roles()
     {
         $user = factory(User::class)->create();
-        $role_one = Role::find(1);
-        $role_two = Role::find(2);
-
-        $user->roles()->attach($role_one);
-
         $this->assertEquals($user->roles()->count(), 1);
 
-        $user->roles()->attach($role_two);
-
+        $role = Role::where('title', 'admin')->firstOrFail();
+        $user->roles()->attach($role);
         $this->assertEquals($user->roles()->count(), 2);
     }
 
@@ -45,10 +41,9 @@ class UserTest extends TestCase
     public function a_user_can_have_many_roles_but_they_have_to_be_unique()
     {
         $user = factory(User::class)->create();
-        $role = Role::find(1);
+        $role = Role::where('title', 'employee')->firstOrFail();
 
         try {
-            $user->roles()->attach($role);
             $user->roles()->attach($role);
         } catch (QueryException $e) {
         }
