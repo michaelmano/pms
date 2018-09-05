@@ -3,7 +3,6 @@
 use Monolog\Handler\StreamHandler;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default Log Channel
@@ -35,7 +34,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['single', 'slack'],
         ],
 
         'single' => [
@@ -54,9 +53,8 @@ return [
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
-            'username' => 'Laravel Log',
-            'emoji' => ':boom:',
-            'level' => 'critical',
+            'username' => 'Durian Dashboard',
+            'emoji' => ':unicorn_face:',
         ],
 
         'stderr' => [
@@ -77,5 +75,4 @@ return [
             'level' => 'debug',
         ],
     ],
-
 ];
