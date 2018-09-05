@@ -39,6 +39,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * The users profile
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasOne
+     */
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    /**
      * The roles that the current user has.
      *
      * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
