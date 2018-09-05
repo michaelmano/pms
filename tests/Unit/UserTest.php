@@ -50,4 +50,12 @@ class UserTest extends TestCase
 
         $this->assertEquals($user->roles()->count(), 1);
     }
+
+    /** @test */
+    public function a_user_has_a_profile()
+    {
+        $user = factory(User::class)->create();
+
+        $this->assertNotEmpty($user->profile());
+    }
 }
