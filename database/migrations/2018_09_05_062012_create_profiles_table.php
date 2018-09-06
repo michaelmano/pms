@@ -8,8 +8,6 @@ class CreateProfilesTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -24,17 +22,12 @@ class CreateProfilesTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->string('slack_username')
-                ->nullable();
-
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

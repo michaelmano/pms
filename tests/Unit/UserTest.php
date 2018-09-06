@@ -55,7 +55,6 @@ class UserTest extends TestCase
     public function a_user_has_a_profile()
     {
         $user = factory(User::class)->create();
-
         $this->assertNotEmpty($user->profile());
     }
 }
