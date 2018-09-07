@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Role;
+use App\Profile;
 
 class UserEventSubscriber
 {
@@ -13,6 +14,7 @@ class UserEventSubscriber
     {
         $employee_role = Role::where('title', 'employee')->firstOrFail();
         $event->user->roles()->attach($employee_role);
+        $event->user->profile()->save(new Profile());
     }
 
     /**
