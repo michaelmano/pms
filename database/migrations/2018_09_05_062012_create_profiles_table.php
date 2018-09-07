@@ -22,6 +22,9 @@ class CreateProfilesTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
+            $table->string('slack_id')
+                ->nullable();
+
             $table->timestamps();
         });
     }
