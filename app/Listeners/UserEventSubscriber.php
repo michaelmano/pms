@@ -3,7 +3,6 @@
 namespace App\Listeners;
 
 use App\Role;
-use App\Services\Slack;
 
 class UserEventSubscriber
 {
@@ -14,8 +13,6 @@ class UserEventSubscriber
     {
         $employee_role = Role::where('title', 'employee')->firstOrFail();
         $event->user->roles()->attach($employee_role);
-
-        Slack::sendWelcomeMessage($event->user);
     }
 
     /**
