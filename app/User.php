@@ -32,6 +32,11 @@ class User extends Authenticatable
     ];
 
     /**
+     * The relationships we will always attach.
+     */
+    protected $with = ['profile'];
+
+    /**
      * The eloquent events that should be dispatched.
      */
     protected $dispatchesEvents = [
