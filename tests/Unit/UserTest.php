@@ -52,9 +52,9 @@ class UserTest extends TestCase
     }
 
     /** @test */
-    public function a_user_has_a_profile()
+    public function a_users_profile_is_created_automatically()
     {
         $user = factory(User::class)->create();
-        $this->assertNotEmpty($user->profile());
+        $this->assertNotEmpty($user->profile->id);
     }
 }
