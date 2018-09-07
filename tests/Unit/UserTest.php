@@ -57,4 +57,21 @@ class UserTest extends TestCase
         $user = factory(User::class)->create();
         $this->assertNotEmpty($user->profile->id);
     }
+
+    /** @test */
+    public function a_users_slack_id_is_added_on_user_creation_if_it_exists()
+    {
+        // existing slack email which you can set in the .env file
+        $user = factory(User::class)->create(
+            ['email' => env('TESTS_EXISTING_SLACK_USER_EMAIL')]
+        );
+        $this->assertNotEmpty($user->profile->slack_id);
+    }
+
+    /** @test */
+    public function a_users_slack_id_empty_if_they_do_not_exist_on_the_team()
+    {
+        $user = factory(User::class)->create();
+        $this->assertEmpty($user->profile->slack_id);
+    }
 }

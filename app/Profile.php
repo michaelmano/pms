@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'slack_id',
+    ];
+
+    /**
      * The user this profile belongs to.
      *
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
