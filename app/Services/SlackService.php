@@ -30,9 +30,22 @@ class SlackService
     }
 
     /**
-     * Find a specific users details in slack
+     * Search for a specific user email.
      */
     public function find(User $user)
+    {
+        return $this->search('email', $user->email);
+    }
+
+    /**
+     * Filter the slack user data by terms provided.
+     *
+     * @param string $slackKey    - The profile key we are searching by
+     * @param string $searchValue - The value the key must match
+     *
+     * @return object $slack_user
+     */
+    public function search($slackKey, $searchValue)
     {
         $data = json_decode($this->getUsers());
 
@@ -40,8 +53,8 @@ class SlackService
             ->filter(function ($member) {
                 return isset($member->profile->email);
             })
-            ->first(function ($value, $key) use ($user) {
-                return $value->profile->email === $user->email;
+            ->first(function ($value, $key) use ($slackKey, $searchValue) {
+                return $value->profile->$slackKey === $searchValue;
             });
     }
 
