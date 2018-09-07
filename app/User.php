@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Notifications\InvoicePaid;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -75,5 +75,13 @@ class User extends Authenticatable
             ->roles()
             ->get()
             ->contains('title', $title);
+    }
+
+    /**
+     * Default slack webhook
+     */
+    public function routeNotificationForSlack()
+    {
+        return config('services.slack.webhook');
     }
 }

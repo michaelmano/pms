@@ -37,6 +37,7 @@ return [
 
     'slack' => [
         'token' => env('SLACK_BOT_TOKEN'),
+        'webhook' => env('SLACK_WEBHOOK_UR'),
     ],
 
 ];
