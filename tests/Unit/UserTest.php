@@ -72,4 +72,11 @@ class UserTest extends TestCase
         $user = factory(\App\User::class)->create();
         $this->assertEmpty($user->profile->slack_id);
     }
+
+    /** @test */
+    public function a_user_has_a_status()
+    {
+        $user = factory(\App\User::class)->create();
+        $this->assertEmpty($user->status);
+    }
 }

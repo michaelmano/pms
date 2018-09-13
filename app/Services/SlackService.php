@@ -18,6 +18,7 @@ class SlackService
      */
     private $slack_api_routes = [
         'list_users' => 'https://slack.com/api/users.list',
+        'set_status' => 'https://slack.com/api/users.profile.set',
     ];
 
     public function __construct()
@@ -75,5 +76,32 @@ class SlackService
             });
         } catch (RequestException $exception) {
         }
+    }
+
+    /**
+     * Set a users status.
+     */
+    public function setStatus($data)
+    {
+        $client = new Client([
+            'headers' => [
+                    'Content-Type' => 'pplication/json; charset=utf-8',
+                    'Authorization' => 'Bearer ' . $data['slack_token'],
+                    'X-Slack-User' => $data['slack_id'],
+            ],
+        ]);
+
+        return $client
+            ->post($this->slack_api_routes['set_status'], [
+                'json' => [
+                    'profile' => [
+                        'status_text' => 'eh',
+                        'status_emoji' => ':mountain_railway:',
+                        'status_expiration' => 0,
+                    ],
+                ],
+            ])
+            ->getBody()
+            ->getContents();
     }
 }
