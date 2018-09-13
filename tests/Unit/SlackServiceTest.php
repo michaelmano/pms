@@ -2,7 +2,6 @@
 
 namespace Tests\Unit;
 
-use App\User;
 use Tests\TestCase;
 use App\Services\SlackService;
 
@@ -33,7 +32,7 @@ class SlackServiceTest extends TestCase
         })->first();
 
         // Creates a user with that email
-        $user = factory(User::class)->create([
+        $user = factory(\App\User::class)->create([
             'email' => $first_slack_user->profile->email,
         ]);
 

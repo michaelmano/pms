@@ -2,8 +2,6 @@
 
 namespace Tests\Unit;
 
-use App\Role;
-use App\User;
 use Illuminate\Database\QueryException;
 use Tests\TestCase;
 
@@ -12,7 +10,7 @@ class UserTest extends TestCase
     /** @test */
     public function a_user_has_a_first_and_last_name()
     {
-        $user = factory(User::class)->create();
+        $user = factory(\App\User::class)->create();
 
         $this->assertNotEmpty($user->first_name);
         $this->assertNotEmpty($user->last_name);
@@ -21,7 +19,7 @@ class UserTest extends TestCase
     /** @test */
     public function a_user_starts_with_the_employee_role()
     {
-        $user = factory(User::class)->create();
+        $user = factory(\App\User::class)->create();
 
         $this->assertTrue($user->hasRole('employee'));
     }
@@ -29,10 +27,10 @@ class UserTest extends TestCase
     /** @test */
     public function a_user_can_have_many_roles()
     {
-        $user = factory(User::class)->create();
+        $user = factory(\App\User::class)->create();
         $this->assertEquals($user->roles()->count(), 1);
 
-        $role = Role::where('title', 'admin')->firstOrFail();
+        $role = \App\Role::where('title', 'admin')->firstOrFail();
         $user->roles()->attach($role);
         $this->assertEquals($user->roles()->count(), 2);
     }
@@ -40,8 +38,8 @@ class UserTest extends TestCase
     /** @test */
     public function a_user_can_have_many_roles_but_they_have_to_be_unique()
     {
-        $user = factory(User::class)->create();
-        $role = Role::where('title', 'employee')->firstOrFail();
+        $user = factory(\App\User::class)->create();
+        $role = \App\Role::where('title', 'employee')->firstOrFail();
 
         try {
             $user->roles()->attach($role);
@@ -54,7 +52,7 @@ class UserTest extends TestCase
     /** @test */
     public function a_users_profile_is_created_automatically()
     {
-        $user = factory(User::class)->create();
+        $user = factory(\App\User::class)->create();
         $this->assertNotEmpty($user->profile->id);
     }
 
@@ -62,7 +60,7 @@ class UserTest extends TestCase
     public function a_users_slack_id_is_added_on_user_creation_if_it_exists()
     {
         // existing slack email which you can set in the .env file
-        $user = factory(User::class)->create(
+        $user = factory(\App\User::class)->create(
             ['email' => env('TESTS_EXISTING_SLACK_USER_EMAIL')]
         );
         $this->assertNotEmpty($user->profile->slack_id);
@@ -71,7 +69,7 @@ class UserTest extends TestCase
     /** @test */
     public function a_users_slack_id_empty_if_they_do_not_exist_on_the_team()
     {
-        $user = factory(User::class)->create();
+        $user = factory(\App\User::class)->create();
         $this->assertEmpty($user->profile->slack_id);
     }
 }
