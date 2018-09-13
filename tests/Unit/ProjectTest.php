@@ -20,4 +20,15 @@ class ProjectTest extends TestCase
         $project = factory(\App\Project::class)->create();
         $this->assertNotEmpty($project->client());
     }
+
+    /** @test */
+    public function a_project_can_have_many_tasks()
+    {
+        $project = factory(\App\Project::class)->create();
+        $task = factory(\App\Task::class)->create([
+            'project_id' => $project->id,
+        ]);
+
+        $this->assertEquals($project->tasks()->count(), 1);
+    }
 }

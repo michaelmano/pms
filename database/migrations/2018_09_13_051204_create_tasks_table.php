@@ -4,22 +4,27 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectsTable extends Migration
+class CreateTasksTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
     public function up()
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('client_id')
-                ->unsigned();
-            $table->foreign('client_id')
+            $table->integer('task_status_id')->unsigned();
+            $table->foreign('task_status_id')
                 ->references('id')
-                ->on('clients')
+                ->on('task_statuses');
+            $table->integer('project_id')
+                ->unsigned();
+            $table->foreign('project_id')
+                ->references('id')
+                ->on('projects')
                 ->onDelete('cascade');
-                $table->string('job_code');
             $table->string('title');
             $table->text('description');
             $table->timestamps();
@@ -28,9 +33,11 @@ class CreateProjectsTable extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
     public function down()
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('tasks');
     }
 }
