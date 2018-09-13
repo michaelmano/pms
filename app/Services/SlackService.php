@@ -67,7 +67,7 @@ class SlackService
             return Cache::get('slack:users');
         }
         try {
-            return Cache::remember('slack:users', 60, function () {
+            return Cache::remember('slack:users', 1440, function () {
                 return $this->client
                     ->get($this->slack_api_routes['list_users'])
                     ->getBody()
