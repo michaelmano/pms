@@ -13,6 +13,7 @@ class Profile extends Model
      */
     protected $fillable = [
         'slack_id',
+        'slack_token',
     ];
 
     /**
