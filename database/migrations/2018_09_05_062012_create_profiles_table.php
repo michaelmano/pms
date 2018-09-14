@@ -28,6 +28,9 @@ class CreateProfilesTable extends Migration
             $table->string('slack_token')
                 ->nullable();
 
+            $table->string('avatar')
+                ->nullable();
+
             $table->timestamps();
         });
     }

@@ -11,8 +11,6 @@ class ProfileController extends Controller
 {
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -27,6 +25,17 @@ class ProfileController extends Controller
     public function index()
     {
         return view('profile.index');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(User $user)
+    {
+        return view('profile.show')
+            ->with(['user' => $user]);
     }
 
     /**

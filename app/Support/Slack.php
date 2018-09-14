@@ -144,13 +144,7 @@ class Slack
             ],
         ]);
 
-        $response = $this->decode($response);
-
-        if ($response->ok) {
-            return $response;
-        } else {
-            return abort(403, 'Unauthorized action.');
-        }
+        return $this->decode($response);
     }
 
     /**
@@ -166,7 +160,7 @@ class Slack
             ],
         ];
 
-        $response = $this->api_client->post('users.profile.set', [
+        $request = $this->api_client->post('users.profile.set', [
             'headers' => [
                 'Content-Type' => 'application/json; charset=utf-8',
                 'Authorization' => 'Bearer ' . $user->profile->slack_token,
@@ -175,14 +169,49 @@ class Slack
             'json' => $profile,
         ]);
 
-        $response = $this->decode($response);
+        return $this->decode($request);
+    }
 
-        if ($response->ok) {
-            return $response;
-        } else {
-            return abort(403, 'Unauthorized action.');
-        }
+    public function message($channel_or_user, $message, $attachments = [])
+    {
+        $request = $this->api_client->post('chat.postMessage', [
+            'query' => [
+                'token' => $this->bot_token,
+                'as_user' => true,
+                'channel' => $channel_or_user,
+                'text' => $message,
+                'attachments' => $this->buildAttachments($attachments),
+            ],
+        ]);
 
+        return  $this->decode($request);
+    }
+
+    private function buildAttachments($attachments)
+    {
+        $test_project = \App\Project::find(1);
+        $attachments = [
+            'pretext' => 'Job Code ' . $test_project->job_code,
+            'author' => \App\User::find(1),
+            'title' => $test_project->title,
+            'text' => $test_project->description,
+            'title_link' => route('project.show', ['project' => $test_project->id]),
+        ];
+
+        return json_encode([
+            'attachments' => [
+                'color' => '#2eb886',
+                'pretext' => $attachments['pretext'],
+                'author_name' => $attachments['author']->first_name . ' has added you to the following project',
+                'author_link' => route('profile.show', ['user' => $attachments['author']->id]),
+                'author_icon' => $attachments['author']->profile->avatar,
+                'title' => $attachments['title'],
+                'title_link' => $attachments['title_link'],
+                'text' => $attachments['text'],
+                'footer' => 'Durian Project Management System',
+                'footer_icon' => 'http://bcm.st.bcmpreview.com/wp-content/uploads/2018/09/dots.png',
+            ],
+        ]);
     }
 
     /**
@@ -195,13 +224,13 @@ class Slack
         }
 
         return Cache::remember('slack:emojis', 1440, function () {
-            $response = $this->api_client->get('emoji.list', [
+            $request = $this->api_client->get('emoji.list', [
                 'query' => [
                     'token' => $this->access_token,
                 ],
             ]);
 
-            $response = $this->decode($response);
+            $response = $this->decode($request);
 
             if ($response->emoji) {
                 return collect($response->emoji)->filter(function ($emoji) {
@@ -211,8 +240,13 @@ class Slack
         });
     }
 
-    private function decode($response)
+    private function decode($request)
     {
-        return json_decode($response->getBody()->getContents());
+        $response = json_decode($request->getBody()->getContents());
+        if ($response->ok) {
+            return $response;
+        } else {
+            return abort(403, 'Unauthorized action.');
+        }
     }
 }
