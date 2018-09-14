@@ -35,12 +35,17 @@ return [
     ],
 
     'slack' => [
-        'application_id' => env('SLACK_APPLICATION_ID'),
-        'application_client_id' => env('SLACK_APPLICATION_CLIENT_ID'),
-        'application_client_secret' => env('SLACK_APPLICATION_CLIENT_SECRET'),
-        'application_signing_secret' => env('SLACK_APPLICATION_SIGNING_SECRET'),
-        'application_bot_token' => env('SLACK_APPLICATION_BOT_TOKEN'),
-        'application_access_token' => env('SLACK_APPLICATION_ACCESS_TOKEN'),
-        'application_webhook_url' => env('SLACK_APPLICATION_WEBHOOK_URL'),
+        'id' => env('SLACK_ID'),
+        'client_id' => env('SLACK_CLIENT_ID'),
+        'client_secret' => env('SLACK_CLIENT_SECRET'),
+        'signing_secret' => env('SLACK_SIGNING_SECRET'),
+        'bot_token' => env('SLACK_BOT_TOKEN'),
+        'access_token' => env('SLACK_ACCESS_TOKEN'),
+        'webhook_url' => env('SLACK_WEBHOOK_URL'),
+        'redirect_uri' => config('app.url') . '/slack/callback',
+        'scopes' => [
+            // https://api.slack.com/docs/oauth-scopes
+            'users.profile:write',
+        ],
     ],
 ];

@@ -1,12 +1,21 @@
 <?php
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
 
-Route::prefix('oauth')->group(function () {
-    Route::get('slack', 'SlackController@index');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
-Auth::routes(['verify' => true]);
-Route::get('/home', 'HomeController@index')->name('home');
+Route::namespace('Profile')
+    ->prefix('profile')
+    ->name('profile.')
+    ->group(function () {
+        Route::get('/', 'ProfileController@index')->name('index');
+        Route::post('/{user}/status', 'ProfileController@status')->name('status');
+    });
+
+Route::namespace('Slack')
+    ->prefix('slack')
+    ->name('slack.')
+    ->group(function () {
+        Route::get('/', 'SlackController@auth')->name('auth');
+        Route::get('/callback', 'SlackController@callback')->name('callback');
+    });
