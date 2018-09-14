@@ -40,6 +40,7 @@ return [
         'application_client_secret' => env('SLACK_APPLICATION_CLIENT_SECRET'),
         'application_signing_secret' => env('SLACK_APPLICATION_SIGNING_SECRET'),
         'application_bot_token' => env('SLACK_APPLICATION_BOT_TOKEN'),
+        'application_access_token' => env('SLACK_APPLICATION_ACCESS_TOKEN'),
         'application_webhook_url' => env('SLACK_APPLICATION_WEBHOOK_URL'),
     ],
 ];
