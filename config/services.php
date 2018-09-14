@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Third Party Services
@@ -36,8 +35,11 @@ return [
     ],
 
     'slack' => [
-        'token' => env('SLACK_BOT_TOKEN'),
-        'webhook' => env('SLACK_WEBHOOK_UR'),
+        'application_id' => env('SLACK_APPLICATION_ID'),
+        'application_client_id' => env('SLACK_APPLICATION_CLIENT_ID'),
+        'application_client_secret' => env('SLACK_APPLICATION_CLIENT_SECRET'),
+        'application_signing_secret' => env('SLACK_APPLICATION_SIGNING_SECRET'),
+        'application_bot_token' => env('SLACK_APPLICATION_BOT_TOKEN'),
+        'application_webhook_url' => env('SLACK_APPLICATION_WEBHOOK_URL'),
     ],
-
 ];
