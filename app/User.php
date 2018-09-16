@@ -77,12 +77,4 @@ class User extends Authenticatable
             ->get()
             ->contains('title', $title);
     }
-
-    /**
-     * Default slack webhook
-     */
-    public function routeNotificationForSlack()
-    {
-        return config('services.slack.webhook');
-    }
 }

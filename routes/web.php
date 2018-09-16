@@ -13,15 +13,6 @@ Route::namespace('Profile')
         Route::post('/{user}/status', 'ProfileController@status')->name('status');
     });
 
-Route::namespace('Slack')
-    ->prefix('slack')
-    ->name('slack.')
-    ->group(function () {
-        Route::get('/', 'SlackController@auth')->name('auth');
-        Route::get('/callback', 'SlackController@callback')->name('callback');
-    });
-
-
 Route::namespace('Project')
     ->prefix('project')
     ->name('project.')

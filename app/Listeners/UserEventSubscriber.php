@@ -12,10 +12,9 @@ class UserEventSubscriber
      */
     public function onUserCreated($event)
     {
-        $profile_data = [];
         $employee_role = Role::where('title', 'employee')->firstOrFail();
         $event->user->roles()->attach($employee_role);
-        $event->user->profile()->save(new Profile($profile_data));
+        $event->user->profile()->save(new Profile());
     }
 
     /**

@@ -22,13 +22,10 @@ class CreateProfilesTable extends Migration
                 ->on('users')
                 ->onDelete('cascade');
 
-            $table->string('slack_id')
-                ->nullable();
-
-            $table->string('slack_token')
-                ->nullable();
-
             $table->string('avatar')
+                ->nullable();
+
+            $table->text('biography')
                 ->nullable();
 
             $table->timestamps();

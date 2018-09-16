@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Project;
 
-use Slack;
 use App\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
