@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }}</title>
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <vue-nav />
+        <vue-navigation></vue-navigation>
         <main>
             @yield('content')
         </main>
     </div>
+    <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 </body>
 </html>

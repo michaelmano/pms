@@ -50,4 +50,7 @@ export default {
 };
 </script>
 <style lang="sass" scoped>
+  .navigation {
+    background: #000;
+  }
 </style>

@@ -1,7 +1,9 @@
 import Vue from 'vue';
-import * as components from './components';
+import VueNavigation from './components/Navigation.vue';
 
 const APP = new Vue({
   el: '#app',
-  components: components,
+  components: {
+    'vue-navigation': VueNavigation,
+  },
 });
