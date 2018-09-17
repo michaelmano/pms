@@ -1,8 +1,13 @@
 const path = require('path');
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+
+function resolve(dir) {
+  return path.join(__dirname, './', dir);
+}
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -14,11 +19,19 @@ module.exports = {
   },
   entry: ['./resources/assets/entry.js'],
   output: {
-    path: path.resolve(__dirname, './public/'),
+    path: resolve('./public/'),
     filename: 'js/app.js',
   },
   module: {
     rules: [
+      {
+        test: /\.(png|jp(e*)g|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+          },
+        ],
+      },
       {
         test: /\.(css|sass|scss)$/,
         use: ['vue-style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
@@ -43,5 +56,12 @@ module.exports = {
       proxy: { target: `${__dirname.split('/').pop(-1)}.test` }, // folder-name.test
       port: 3000,
     }),
+    new CopyWebpackPlugin([
+      {
+        from: resolve('resources/assets/images'),
+        to: resolve('public/images'),
+        toType: 'dir',
+      },
+    ]),
   ],
 };
