@@ -1,6 +1,8 @@
+const path = require('path');
+
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const path = require('path');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -34,5 +36,12 @@ module.exports = {
       },
     ],
   },
-  plugins: [new VueLoaderPlugin(), new MiniCssExtractPlugin({ filename: 'css/app.css' })],
+  plugins: [
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({ filename: 'css/app.css' }),
+    new BrowserSyncPlugin({
+      proxy: { target: `${__dirname.split('/').pop(-1)}.test` }, // folder-name.test
+      port: 3000,
+    }),
+  ],
 };
