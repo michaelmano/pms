@@ -1,7 +1,6 @@
 <template>
   <header>
     <div class="container">
-      {{ msg }}
       <nav class="navigation">
         <ul class="navigation__list">
           <li
