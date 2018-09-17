@@ -1,8 +1,5 @@
 {
   "private": true,
-  "sideEffects": [
-    "*.vue"
-  ],
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch --progress",
