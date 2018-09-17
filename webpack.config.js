@@ -1,5 +1,3 @@
-'use strict';
-
 const { VueLoaderPlugin } = require('vue-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
@@ -20,49 +18,21 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(css|sass|scss)$/,
+        use: ['vue-style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+      },
+      {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
         },
       },
       {
         test: /\.vue$/,
         use: ['vue-loader'],
       },
-      {
-        test: /\.(css|sass|scss)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2,
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [require('autoprefixer')],
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-        ],
-      },
     ],
   },
-  plugins: [
-    new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({ filename: 'css/app.css' }),
-  ],
+  plugins: [new VueLoaderPlugin(), new MiniCssExtractPlugin({ filename: 'css/app.css' })],
 };

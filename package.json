@@ -1,8 +1,12 @@
 {
   "private": true,
+  "sideEffects": [
+    "*.vue"
+  ],
   "scripts": {
     "build": "webpack",
-    "watch": "webpack --watch --progress"
+    "watch": "webpack --watch --progress",
+    "lint": "eslint --ext .js,.vue resources/assets/js"
   },
   "dependencies": {
     "autoprefixer": "^9.1.5",
@@ -14,8 +18,17 @@
     "@babel/core": "^7.0.1",
     "@babel/polyfill": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
+    "babel-eslint": "^9.0.0",
     "babel-loader": "^8.0.2",
     "css-loader": "^1.0.0",
+    "eslint": "^5.6.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^4.7.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "mini-css-extract-plugin": "^0.4.2",
     "node-sass": "^4.9.3",

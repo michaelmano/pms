@@ -4,11 +4,16 @@
       {{ msg }}
       <nav class="navigation">
         <ul class="navigation__list">
-          <li class="navigation__list-item" v-for="(link, index) in links" :key="index">
-            <a class="navigation__list-link"
-               :title="link.title"
-               :href="link.href"
-               v-text="link.text"
+          <li
+            v-for="(link, index) in links"
+            :key="index"
+            class="navigation__list-item"
+          >
+            <a
+              :title="link.title"
+              :href="link.href"
+              class="navigation__list-link"
+              v-text="link.text"
             />
           </li>
         </ul>
@@ -18,6 +23,23 @@
 </template>
 <script>
 export default {
+  props: {
+    msg: {
+      type: String,
+      default: null,
+    },
+  },
+  data() {
+    return {
+      links: [
+        { title: 'Navigate Home', href: '/', text: 'Home' },
+        { title: 'About us', href: '/about', text: 'About' },
+        { title: 'Contact us', href: '/contact', text: 'Contact' },
+      ],
+    };
+  },
+  computed: {},
+  watch: {},
   beforeCreate() {},
   created() {},
   beforeMount() {},
@@ -29,24 +51,7 @@ export default {
   beforeDestroy() {},
   destroyed() {},
   errorCaptured() {},
-  data() {
-    return {
-      links: [
-        { title: 'Navigate Home', href: '/', text: 'Home' },
-        { title: 'About us', href: '/about', text: 'About' },
-        { title: 'Contact us', href: '/contact', text: 'Contact' },
-      ],
-    };
-  },
-  props: {
-    msg: {
-      type: String,
-      default: null,
-    },
-  },
-  watch: {},
   methods: {},
-  computed: {},
 };
 </script>
 <style lang="sass" scoped>
