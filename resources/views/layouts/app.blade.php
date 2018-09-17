@@ -7,25 +7,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }}</title>
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        @guest
-            <a href="{{ route('login') }}">{{ __('Login') }}</a>
-            <a href="{{ route('register') }}">{{ __('Register') }}</a>
-        @else
-            User Content: Hello {{ Auth::user()->first_name }}, How are you today?
-            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        @endguest
-
+        <vue-nav />
         <main>
             @yield('content')
         </main>
