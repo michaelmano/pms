@@ -1,6 +1,8 @@
 <template>
   <header>
     <div class="container">
+      {{ count }}
+      <button @click="$store.commit('increment')">Increment counter</button>
       <nav class="navigation">
         <ul class="navigation__list">
           <li
@@ -21,13 +23,9 @@
   </header>
 </template>
 <script>
+import {mapState, mapMutations} from 'vuex';
 export default {
-  props: {
-    msg: {
-      type: String,
-      default: null,
-    },
-  },
+  props: {},
   data() {
     return {
       links: [
@@ -37,12 +35,16 @@ export default {
       ],
     };
   },
-  computed: {},
+  computed: {
+    ...mapState(['count']),
+  },
   watch: {},
   beforeCreate() {},
   created() {},
   beforeMount() {},
-  mounted() {},
+  mounted() {
+    console.log(this.$store)
+  },
   beforeUpdate() {},
   updated() {},
   activated() {},
@@ -50,7 +52,14 @@ export default {
   beforeDestroy() {},
   destroyed() {},
   errorCaptured() {},
-  methods: {},
+  methods: {
+    ...mapMutations([
+      'increment', // map `this.increment()` to `this.$store.commit('increment')`
+    ]),
+    ...mapMutations({
+      add: 'increment' // map `this.add()` to `this.$store.commit('increment')`
+    })
+  },
 };
 </script>
 <style lang="sass" scoped>
