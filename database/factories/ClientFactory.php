@@ -14,13 +14,13 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\Client::class, function (Faker $faker) {
-    $abbreviation = implode([
+    $acronym = implode([
         chr(rand(65,90)),
         chr(rand(65,90)),
         chr(rand(65,90))
     ]);
     return [
         'name' => $faker->name,
-        'abbreviation' => $abbreviation,
+        'acronym' => $acronym,
     ];
 });

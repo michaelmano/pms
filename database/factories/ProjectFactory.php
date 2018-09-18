@@ -14,7 +14,7 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\Project::class, function (Faker $faker) {
-    $abbreviation = implode([
+    $acronym = implode([
         chr(rand(65,90)),
         chr(rand(65,90)),
         chr(rand(65,90))
@@ -22,7 +22,7 @@ $factory->define(App\Project::class, function (Faker $faker) {
     return [
         'client_id' => factory(App\Client::class)->create()->id,
         'title' => $faker->name,
-        'job_code' => $abbreviation,
+        'job_code' => $acronym,
         'description' => $faker->sentence,
     ];
 });

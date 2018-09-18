@@ -15,10 +15,10 @@ class ClientTest extends TestCase
     }
 
     /** @test */
-    public function a_client_has_an_abbreviation()
+    public function a_client_has_an_acronym()
     {
         $client = factory(\App\Client::class)->create();
-        $this->assertNotEmpty($client->abbreviation);
+        $this->assertNotEmpty($client->acronym);
     }
 
      /** @test */
