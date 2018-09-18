@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import store from './store';
-import VueNavigation from './components/Navigation.vue';
-
+import VueHeader from './components/Header.vue';
 /**
  * Initializing the store as a global object here
  * as Vuex has been implemented in bootstrap.js
@@ -19,6 +18,6 @@ Vue.use({
 const APP = new Vue({
   el: '#app',
   components: {
-    'vue-navigation': VueNavigation,
+    'vue-header': VueHeader,
   },
 });

@@ -8,6 +8,7 @@
   "dependencies": {
     "autoprefixer": "^9.1.5",
     "axios": "^0.18",
+    "normalize.css": "^8.0.0",
     "postcss-loader": "^3.0.0",
     "vue": "^2.5.17",
     "vuex": "^3.0.1"

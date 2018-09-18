@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <vue-navigation></vue-navigation>
+        <vue-header :user="{{ json_encode(Auth::user()) }}"></vue-header>
         <main>
             @yield('content')
         </main>

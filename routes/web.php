@@ -1,8 +1,8 @@
 <?php
 
-Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::view('/', 'home');
+Auth::routes();
 
 Route::namespace('Profile')
     ->prefix('profile')
