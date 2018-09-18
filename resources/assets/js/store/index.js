@@ -1,12 +1,10 @@
 import Vuex from 'vuex';
 
 export default new Vuex.Store({
-  state: {
-    count: 0,
-  },
+  state: {},
   mutations: {
-    increment(state, payload) {
-      state.count++;
+    setProperty(state, payload) {
+      state[payload.property] = payload.value;
     },
   },
 });

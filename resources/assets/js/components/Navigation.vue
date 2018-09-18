@@ -1,8 +1,9 @@
 <template>
   <header>
     <div class="container">
-      {{ count }}
-      <button @click="$store.commit('increment')">Increment counter</button>
+      <div v-if="user">
+        Welcome {{ user.first_name }}
+      </div>
       <nav class="navigation">
         <ul class="navigation__list">
           <li
@@ -36,15 +37,12 @@ export default {
     };
   },
   computed: {
-    ...mapState(['count']),
+    ...mapState(['user']),
   },
   watch: {},
   beforeCreate() {},
   created() {},
   beforeMount() {},
-  mounted() {
-    console.log(this.$store)
-  },
   beforeUpdate() {},
   updated() {},
   activated() {},
@@ -52,14 +50,7 @@ export default {
   beforeDestroy() {},
   destroyed() {},
   errorCaptured() {},
-  methods: {
-    ...mapMutations([
-      'increment', // map `this.increment()` to `this.$store.commit('increment')`
-    ]),
-    ...mapMutations({
-      add: 'increment' // map `this.add()` to `this.$store.commit('increment')`
-    })
-  },
+  methods: {},
 };
 </script>
 <style lang="sass" scoped>
