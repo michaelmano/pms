@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+<form method="POST" action="{{ route('auth.register') }}" aria-label="{{ __('Register') }}">
     @csrf
     <fieldset>
         <label for="register-first_name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>

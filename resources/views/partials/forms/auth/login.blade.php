@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">
+<form method="POST" action="{{ route('auth.login') }}" aria-label="{{ __('Login') }}">
     @csrf
     <fieldset>
         <label for="login-email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -21,8 +21,5 @@
         <button type="submit" class="btn btn-primary">
             {{ __('Login') }}
         </button>
-        <a class="btn btn-link" href="{{ route('password.request') }}">
-            {{ __('Forgot Your Password?') }}
-        </a>
     </fieldset>
 </form>

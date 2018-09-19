@@ -3,10 +3,10 @@
     <div class="container container--flex-center">
         <vue-tabs>
             <vue-tab name="login">
-                @include('partials.forms.login')
+                @include('partials.forms.auth.login')
             </vue-tab>
-            <vue-tab name="register">
-                @include('partials.forms.register')
+            <vue-tab name="reset-password">
+                @include('partials.forms.auth.password.email')
             </vue-tab>
         </vue-tabs>
     </div>

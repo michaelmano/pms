@@ -32,10 +32,20 @@ abstract class TestCase extends BaseTestCase
             }
         });
     }
+
     protected function withExceptionHandling()
     {
         $this->app->instance(ExceptionHandler::class, $this->oldExceptionHandler);
         return $this;
+    }
+
+    protected function login($user = null)
+    {
+        if ($user === null) {
+            $user = factory(\App\User::class)->create();
+        }
+
+        return $this->actingAs($user);
     }
 
 }

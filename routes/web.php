@@ -2,7 +2,20 @@
 
 Route::get('/', 'HomeController@index')->name('index');
 
-Auth::routes();
+Route::namespace('Auth')
+    ->prefix('auth')
+    ->name('auth.')
+    ->group(function () {
+        Route::post('/login', 'LoginController@login')->name('login');
+        Route::post('/register', 'RegisterController@register')->name('register');
+
+        Route::post('/password/email', 'ForgotPasswordController@sendResetLinkEmail')
+            ->name('password.email');
+        Route::post('/password/reset', 'ResetPasswordController@reset')
+            ->name('password.update');
+        Route::get('/password/reset/{token}', 'ResetPasswordController@showResetForm')
+            ->name('password.reset');
+    });
 
 Route::namespace('Profile')
     ->prefix('profile')
@@ -26,7 +39,7 @@ Route::namespace('Project')
 Route::namespace('Client')
     ->prefix('clients')
     ->name('clients.')
-    ->group(function() {
+    ->group(function () {
         Route::get('/', 'ClientController@index')->name('index');
         Route::post('/', 'ClientController@store')->name('store');
         Route::get('/create', 'ClientController@create')->name('create');
