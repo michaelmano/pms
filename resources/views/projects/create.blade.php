@@ -24,7 +24,7 @@
             @endif
 
             <label for="job_code">{{ __('Job Code') }}</label>
-            <input id="job_code" type="text" name="job_code" value="{{ old('job_code') }}" required autofocus>
+            <input id="job_code" type="text" name="job_code" value="{{ old('job_code') }}" required>
             @if ($errors->has('job_code'))
                 <strong>{{ $errors->first('job_code') }}</strong>
             @endif

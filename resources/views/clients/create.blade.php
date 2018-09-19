@@ -11,7 +11,7 @@
             <strong>{{ $errors->first('name') }}</strong>
         @endif
         <label for="acronym">{{ __('Client Acronym') }}</label>
-        <input id="acronym" type="text" name="acronym" value="{{ old('acronym') }}" required autofocus>
+        <input id="acronym" type="text" name="acronym" value="{{ old('acronym') }}" required>
         @if ($errors->has('acronym'))
             <strong>{{ $errors->first('acronym') }}</strong>
         @endif
