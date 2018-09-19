@@ -13,6 +13,8 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $root_user = factory(User::class)->create([
+            'first_name' => 'BCM',
+            'last_name' => 'Digital',
             'email' => env('ROOT_APPLICATION_USER_EMAIL'),
             'password' => Hash::make(env('ROOT_APPLICATION_USER_PASSWORD')),
         ]);

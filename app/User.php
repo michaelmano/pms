@@ -45,6 +45,14 @@ class User extends Authenticatable
     ];
 
     /**
+     * Mutator to join the users first and last name.
+     */
+    public function getNameAttribute()
+    {
+        return "$this->first_name $this->last_name";
+    }
+
+    /**
      * The users profile.
      *
      * @return \Illuminate\Database\Eloquent\Relations\hasOne
@@ -87,5 +95,15 @@ class User extends Authenticatable
     public function away()
     {
         return $this->hasONe(UserAway::class);
+    }
+
+    /**
+     * The projects the current user is assigned to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
+     */
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class);
     }
 }

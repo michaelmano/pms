@@ -21,6 +21,15 @@ class Project extends Model
     ];
 
     /**
+     * The relationships we will always attach.
+     */
+    protected $with = [
+        'client',
+        'users',
+        'tasks',
+    ];
+
+    /**
      * The client this project belongs to.
      *
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo
@@ -38,5 +47,15 @@ class Project extends Model
     public function tasks()
     {
         return $this->hasMany(Task::class);
+    }
+
+    /**
+     * A project can have many users.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
+     */
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

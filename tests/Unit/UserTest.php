@@ -17,6 +17,14 @@ class UserTest extends TestCase
     }
 
     /** @test */
+    public function a_user_has_a_full_name()
+    {
+        $user = factory(\App\User::class)->create();
+
+        $this->assertEquals($user->name, "$user->first_name $user->last_name");
+    }
+
+    /** @test */
     public function a_user_starts_with_the_employee_role()
     {
         $user = factory(\App\User::class)->create();
