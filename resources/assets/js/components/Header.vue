@@ -24,7 +24,7 @@ export default {
   methods: {
     logout() {
       return axios
-        .post('/logout')
+        .post('/auth/logout')
         .then((data) => {
           return this.redirect('/');
         })
