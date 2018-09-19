@@ -3,9 +3,23 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Project extends Model
 {
+    use Notifiable;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'client_id',
+        'title',
+        'job_code',
+        'description',
+    ];
+
     /**
      * The client this project belongs to.
      *

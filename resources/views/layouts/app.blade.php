@@ -10,6 +10,12 @@
 </head>
 <body>
     <div id="app">
+        @if (Session::has('success'))
+            @foreach(Session::get('success') as $message)
+                {{ $message }}
+            @endforeach
+        @endif
+
         <vue-header :user="{{ json_encode(Auth::user()) }}"></vue-header>
         <main>
             @yield('content')

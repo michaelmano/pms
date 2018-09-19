@@ -14,9 +14,21 @@ Route::namespace('Profile')
     });
 
 Route::namespace('Project')
-    ->prefix('project')
-    ->name('project.')
+    ->prefix('projects')
+    ->name('projects.')
     ->group(function () {
         Route::get('/', 'ProjectController@index')->name('index');
+        Route::post('/', 'ProjectController@store')->name('store');
+        Route::get('/create', 'ProjectController@create')->name('create');
         Route::get('/{project}', 'ProjectController@show')->name('show');
+    });
+
+Route::namespace('Client')
+    ->prefix('clients')
+    ->name('clients.')
+    ->group(function() {
+        Route::get('/', 'ClientController@index')->name('index');
+        Route::post('/', 'ClientController@store')->name('store');
+        Route::get('/create', 'ClientController@create')->name('create');
+        Route::get('/{client}', 'ClientController@show')->name('show');
     });

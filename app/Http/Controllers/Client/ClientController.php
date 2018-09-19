@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Project;
+namespace App\Http\Controllers\Client;
 
 use App\Client;
-use App\Project;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreAndUpdateProject;
+use App\Http\Requests\StoreAndUpdateClient;
 
-class ProjectController extends Controller
+class ClientController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,8 +23,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('projects.index')
-            ->with(['projects' => Project::all()]);
+        return view('clients.index')
+            ->with(['clients' => Client::all()]);
     }
 
     /**
@@ -35,26 +34,23 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create')
-            ->with(['clients' => Client::all()]);
+        return view('clients.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param App\Http\Requests\StoreAndUpdateProject $request
+     * @param App\Http\Requests\StoreAndUpdateClient $request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAndUpdateProject $request)
+    public function store(StoreAndUpdateClient $request)
     {
-        $project = Project::create(
-            $request->only('client_id', 'title', 'job_code', 'description')
-        );
+        $client = Client::create($request->only('name', 'acronym'));
 
         return redirect()
-            ->route('projects.show', $project)
-            ->with('success', ['The project has been created.']);
+            ->route('clients.show', $client)
+            ->with('success', ['The client has been created.']);
     }
 
     /**
@@ -62,20 +58,20 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show(Client $client)
     {
-        return view('projects.show')
-            ->with(['project' => $project]);
+        return view('clients.show')
+            ->with(['client' => $client]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Project $project
+     * @param \App\Client $client
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $project)
+    public function edit(Client $client)
     {
     }
 
@@ -83,22 +79,22 @@ class ProjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param \App\Project             $project
+     * @param \App\Client             $client
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProject $request, Project $project)
+    public function update(UpdateClient $request, Client $client)
     {
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Project $project
+     * @param \App\Client $client
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $project)
+    public function destroy(Client $client)
     {
     }
 }
