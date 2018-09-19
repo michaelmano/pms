@@ -12,9 +12,10 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class)->create([
-            'email' => 'tester@bcm.com.au',
-            'password' => Hash::make('password'),
+        $root_user = factory(User::class)->create([
+            'email' => env('ROOT_APPLICATION_USER_EMAIL'),
+            'password' => Hash::make(env('ROOT_APPLICATION_USER_PASSWORD')),
         ]);
+        $root_user->roles()->attach(\App\Role::find(3));
     }
 }

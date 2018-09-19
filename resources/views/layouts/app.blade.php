@@ -10,9 +10,14 @@
 </head>
 <body>
     <main id="app">
+        @if($errors->all())
+            @foreach ($errors->all() as $error)
+                <vue-flash message="{{ $error }}" type="error"></vue-flash>
+            @endforeach
+        @endif
         @if (Session::has('success'))
             @foreach(Session::get('success') as $message)
-                {{ $message }}
+                <vue-flash message="{{ $message }}" type="success"></vue-flash>
             @endforeach
         @endif
         <vue-header :user="{{ json_encode(Auth::user()) }}"></vue-header>
