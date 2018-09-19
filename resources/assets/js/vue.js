@@ -1,6 +1,13 @@
 import Vue from 'vue';
 import store from './store';
 import components from './components';
+import mixins from './lib';
+
+/**
+ * Setup some default global functions and
+ * data available to the vue instance.
+ */
+Vue.mixin(mixins);
 
 /**
  * Initializing the store as a global object here

@@ -9,18 +9,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    <main id="app">
         @if (Session::has('success'))
             @foreach(Session::get('success') as $message)
                 {{ $message }}
             @endforeach
         @endif
-
         <vue-header :user="{{ json_encode(Auth::user()) }}"></vue-header>
-        <main>
-            @yield('content')
-        </main>
-    </div>
+        @yield('content')
+    </main>
     <script src="{{ asset('js/app.js') }}" type="text/javascript"></script>
 </body>
 </html>

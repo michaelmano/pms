@@ -1,7 +1,7 @@
 <?php
 
+Route::get('/', 'HomeController@index')->name('index');
 
-Route::view('/', 'home');
 Auth::routes();
 
 Route::namespace('Profile')

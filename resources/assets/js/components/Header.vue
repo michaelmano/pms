@@ -1,9 +1,12 @@
 <template>
-  <header class="header">
-    <div class="container">
-      <nav class="navigation">
-      </nav>
-    </div>
+  <header class="header" v-if="user">
+    <nav class="navigation">
+      <ul class="navigation__list">
+        <li class="navigation__list-item">
+          <button class="button" @click="logout">Logout</button>
+        </li>
+      </ul>
+    </nav>
   </header>
 </template>
 <script>
@@ -18,16 +21,15 @@ export default {
   created() {},
   mounted() {
   },
-  beforeMount() {},
-  beforeUpdate() {},
-  updated() {},
-  activated() {},
-  deactivated() {},
-  beforeDestroy() {},
-  destroyed() {},
-  errorCaptured() {},
-  methods: {},
+  methods: {
+    logout() {
+      return axios
+        .post('/logout')
+        .then((data) => {
+          return this.redirect('/');
+        })
+        .catch(console.error);
+    }
+  },
 };
 </script>
-<style lang="sass" scoped>
-</style>

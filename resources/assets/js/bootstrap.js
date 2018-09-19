@@ -13,6 +13,7 @@ Vue.use(Vuex);
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+window.axios = axios;
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**

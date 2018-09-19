@@ -1,4 +1,7 @@
-@import '~normalize.css';
+@import './reset';
 @import 'config/variables';
 @import 'config/mixins';
-@import 'components/header';
+@import 'structures/container';
+@import 'structures/header';
+@import 'components/tabs';
+@import 'components/button';
