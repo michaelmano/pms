@@ -78,4 +78,14 @@ class User extends Authenticatable
             ->get()
             ->contains('title', $title);
     }
+
+    /**
+     * If the current user is away or not.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasOne
+     */
+    public function away()
+    {
+        return $this->hasONe(UserAway::class);
+    }
 }

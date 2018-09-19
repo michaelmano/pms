@@ -64,4 +64,19 @@ class UserTest extends TestCase
         $user->profile->update(['status' => $status]);
         $this->assertEquals($user->profile->status, $status);
     }
+
+    /** @test */
+    public function a_user_can_be_away()
+    {
+        $reason = 'Out to lunch!';
+        $returning = \Carbon\Carbon::now()->addMinutes(10);
+        $user = factory(\App\User::class)->create();
+        $away = factory(\App\UserAway::class)->create([
+            'reason' => $reason,
+            'returning' => $returning,
+            'user_id' => $user->id,
+        ]);
+
+        $this->assertEquals($user->away->reason, $reason);
+    }
 }

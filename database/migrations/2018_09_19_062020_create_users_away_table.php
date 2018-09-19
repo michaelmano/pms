@@ -16,11 +16,13 @@ class CreateUsersAwayTable extends Migration
         Schema::create('users_away', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')
-                ->unsigned();
+                ->unsigned()
+                ->unique();
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+            $table->string('reason');
             $table->dateTime('returning');
             $table->timestamps();
         });
