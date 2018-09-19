@@ -12,7 +12,8 @@ class Profile extends Model
      * @var array
      */
     protected $fillable = [
-        'biography'
+        'biography',
+        'status',
     ];
 
     /**

@@ -59,7 +59,9 @@ class UserTest extends TestCase
     /** @test */
     public function a_user_has_a_status()
     {
+        $status = 'Out to lunch!';
         $user = factory(\App\User::class)->create();
-        $this->assertEmpty($user->status);
+        $user->profile->update(['status' => $status]);
+        $this->assertEquals($user->profile->status, $status);
     }
 }

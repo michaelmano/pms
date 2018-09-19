@@ -25,6 +25,9 @@ class CreateProfilesTable extends Migration
             $table->string('avatar')
                 ->nullable();
 
+            $table->string('status')
+                ->nullable();
+
             $table->text('biography')
                 ->nullable();
 

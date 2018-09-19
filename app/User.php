@@ -45,7 +45,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The users profile
+     * The users profile.
      *
      * @return \Illuminate\Database\Eloquent\Relations\hasOne
      */
@@ -66,9 +66,10 @@ class User extends Authenticatable
 
     /**
      * An easy way to check if the user has a certain role.
-     * @param String $title
      *
-     * @return Boolean
+     * @param string $title
+     *
+     * @return bool
      */
     public function hasRole(String $title)
     {
