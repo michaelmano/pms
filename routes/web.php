@@ -7,6 +7,7 @@ Route::namespace('Auth')
     ->name('auth.')
     ->group(function () {
         Route::post('/login', 'LoginController@login')->name('login');
+        Route::post('/logout', 'LoginController@logout')->name('logout');
         Route::post('/register', 'RegisterController@register')->name('register');
 
         Route::post('/password/email', 'ForgotPasswordController@sendResetLinkEmail')
