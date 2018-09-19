@@ -1,9 +1,9 @@
 <template>
-  <header class="header" v-if="user">
-    <nav class="navigation">
-      <ul class="navigation__list">
-        <li class="navigation__list-item">
-          <button class="button" @click="logout">Logout</button>
+  <header class="Header" v-if="user">
+    <nav class="Navigation">
+      <ul class="Navigation__list">
+        <li class="Navigation__list-item">
+          <button class="Button" @click="logout">Logout</button>
         </li>
       </ul>
     </nav>

@@ -6,9 +6,9 @@
       :id="hash"
       :ref="hash"
       role="cell"
-      class="tabs__panel"
+      class="Tabs__panel"
     >
-        <div class="tabs__content">
+        <div class="Tabs__content">
             <slot />
         </div>
     </section>

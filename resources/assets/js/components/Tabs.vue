@@ -1,11 +1,11 @@
 <template>
-    <div class="tabs" role="gridcell">
-        <ul role="tablist" class="tabs__list">
+    <div class="Tabs" role="gridcell">
+        <ul role="tablist" class="Tabs__list">
             <li
               v-for="(tab, index) in tabs"
               :key="index"
               v-show="tab.isVisible"
-              class="tabs__list-item"
+              class="Tabs__list-item"
               role="presentation"
             >
                 <a
@@ -14,12 +14,12 @@
                   :aria-selected="tab.isActive"
                   @click="selectTab(tab.hash, $event)"
                   :href="tab.hash"
-                  :class="['tabs__list-link', tab.isActive ? 'is-active' : '']"
+                  :class="['Tabs__list-link', tab.isActive ? 'is-active' : '']"
                   role="button"
                 />
             </li>
         </ul>
-        <div class="tabs__panels">
+        <div class="Tabs__panels">
             <slot/>
         </div>
     </div>

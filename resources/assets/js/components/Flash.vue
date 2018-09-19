@@ -1,5 +1,5 @@
 <template>
-  <section :class="['flash', 'flash--'+type]" v-if="show">
+  <section :class="['Flash', 'Flash--'+type]" v-if="show">
     {{ message }}
   </section>
 </template>

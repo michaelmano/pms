@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('auth.login') }}" aria-label="{{ __('Login') }}">
+<form method="POST" class="Form util-text-center" action="{{ route('auth.login') }}" aria-label="{{ __('Login') }}">
     @csrf
     <fieldset>
         <label for="email" class="util-sr-only">{{ __('E-Mail Address') }}</label>
