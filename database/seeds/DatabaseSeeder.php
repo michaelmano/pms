@@ -13,5 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RolesTableSeeder::class);
         $this->call(TaskStatusesTableSeeder::class);
+        if (App::environment('local')) {
+            $this->call(UserTableSeeder::class);
+        }
     }
 }
