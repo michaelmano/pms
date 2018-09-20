@@ -21,9 +21,16 @@ Vue.use({
 });
 
 /**
+ * Globally register all components
+ */
+for (const name in components) {
+  Vue.component(name, components[name])
+}
+
+/**
  * Setup the main Vue application.
  */
+
 const APP = new Vue({
   el: '#app',
-  components,
 });

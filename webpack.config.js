@@ -26,19 +26,11 @@ module.exports = {
     rules: [
       {
         test: /\.(png|jp(e*)g)$/,
-        use: [
-          {
-            loader: 'url-loader',
-          },
-        ],
+        loader: 'url-loader'
       },
       {
         test: /\.(svg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
+        loader: 'svg-inline-loader'
       },
       {
         test: /\.(css|sass|scss)$/,
