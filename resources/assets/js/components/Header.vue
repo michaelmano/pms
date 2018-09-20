@@ -3,13 +3,9 @@
     <a href="/dashboard" title="Durian Project Management System">
       <vue-icon name="durian" fill="alpha"/>
     </a>
-    <nav class="Navigation">
-      <ul class="Navigation__list">
-        <li class="Navigation__list-item">
-          <button class="Button" @click="logout">Logout</button>
-        </li>
-      </ul>
-    </nav>
+    <a href="/dashboard" title="Durian Project Management System">
+      <vue-icon name="fa-solid-cog" fill="alpha"/>
+    </a>
   </header>
 </template>
 <script>
