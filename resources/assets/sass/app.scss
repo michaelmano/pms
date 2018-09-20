@@ -3,8 +3,11 @@
 @import 'config/variables';
 @import 'config/animations';
 @import 'config/mixins';
+@import 'config/typography';
+@import 'structures/app';
 @import 'structures/container';
 @import 'structures/header';
+@import 'structures/sidebar';
 @import 'components/icon';
 @import 'components/form';
 @import 'components/tabs';

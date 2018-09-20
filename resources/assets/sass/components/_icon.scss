@@ -5,6 +5,7 @@
         width: 100%;
         height: auto;
     }
+    @include scale-hover;
 }
 
 @each $label, $size in $icon-sizes {

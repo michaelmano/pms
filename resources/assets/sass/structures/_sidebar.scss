@@ -1,0 +1,30 @@
+.Sidebar {
+    color: color(alpha);
+    width: 18.75rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1rem 0.25rem;
+    background-color: color(echo);
+    color: color(alpha);
+    & a {
+        color: color(hotel);
+        font-size: 0.75rem;
+        text-decoration: none;
+    }
+}
+
+.Sidebar__widget {
+    background-color: color(foxtrot);
+    border-bottom: 1px solid color(golf);
+    width: 100%;
+    padding: 0.25rem 1rem;
+    font-size: 0.875rem;
+    @include box-shadow-hover;
+}
+
+.Sidebar__footer {
+    width: 100%;
+    margin-top: auto;
+    text-align: right;
+}

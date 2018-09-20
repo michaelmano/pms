@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Roboto+Slab');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Roboto+Slab');
 
 @include headings {
-    font-family: 'Fjalla One', sans-serif;
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+    padding: 0;
 }
 
 @include body-copies {
-    font-family: 'Roboto Slab', serif;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 
