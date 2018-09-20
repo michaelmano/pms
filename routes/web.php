@@ -18,6 +18,13 @@ Route::namespace('Auth')
             ->name('password.reset');
     });
 
+Route::namespace('Dashboard')
+    ->prefix('dashboard')
+    ->name('dashboard.')
+    ->group(function () {
+        Route::get('/', 'DashboardController@index')->name('index');
+    });
+
 Route::namespace('Profile')
     ->prefix('profile')
     ->name('profile.')

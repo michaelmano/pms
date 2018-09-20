@@ -1,30 +1,30 @@
 <form method="POST" class="Form util-text-center" action="{{ route('auth.login') }}" aria-label="{{ __('Login') }}">
     @csrf
-    <fieldset>
-        <label for="email" class="util-sr-only">{{ __('E-Mail Address') }}</label>
+    <fieldset class="Form__fieldset">
         <input
             id="email"
             type="email"
             name="email"
-            placeholder="Email Address"
-            class="{{ $errors->has('email') ? ' is-invalid' : '' }}"
+            class="Form__input {{ $errors->has('email') ? ' is-invalid' : '' }}"
             value="{{ old('email') }}"
             required
-            autofocus>
+            autofocus
+        >
+        <label for="email" class="Form__label">{{ __('E-Mail Address') }}</label>
     </fieldset>
 
-    <fieldset>
-        <label for="password" class="util-sr-only">{{ __('Password') }}</label>
+    <fieldset class="Form__fieldset">
         <input
             id="password"
             type="password"
             name="password"
-            placeholder="Password"
-            class="{{ $errors->has('password') ? ' is-invalid' : '' }}"
-            required>
+            class="Form__input {{ $errors->has('password') ? ' is-invalid' : '' }}"
+            required
+        >
+        <label for="password" class="Form__label">{{ __('Password') }}</label>
     </fieldset>
-    <fieldset>
-        <button type="submit" class="btn btn-primary">
+    <fieldset class="Form__fieldset">
+        <button type="submit" class="Button">
             {{ __('Login') }}
         </button>
     </fieldset>

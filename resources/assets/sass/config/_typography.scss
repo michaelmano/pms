@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Roboto+Slab');
+
+@include headings {
+    font-family: 'Fjalla One', sans-serif;
+}
+
+@include body-copies {
+    font-family: 'Roboto Slab', serif;
+}
+
