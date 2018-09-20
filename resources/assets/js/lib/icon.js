@@ -1,6 +1,6 @@
 const icon = function icon(fileName) {
   if (fileName.startsWith('fa')) {
-    const [_, folder, icon] = fileName.split('-');
+    const [_, folder, icon] = fileName.split(' ')
     return require('@fortawesome/fontawesome-free/svgs/' +
       folder +
       '/' +

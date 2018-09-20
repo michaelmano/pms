@@ -1,6 +1,17 @@
 .Button {
     margin: 0;
     padding: 0.75rem 2rem;
-    background-color: color(delta);
+    background-color: color(hotel);
     color: color(alpha);
+    @include box-shadow;
+    @include scale-hover;
+}
+
+.Button--slim {
+    padding: 0.25rem 1rem;
+}
+
+.Button--fill {
+    display: block;
+    width: 100%;
 }

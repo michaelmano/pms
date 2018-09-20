@@ -4,12 +4,12 @@
     overflow-y: scroll;
     padding: 2rem;
 
-    // &--flex-center {
-    //     display: flex;
-    //     flex-direction: column;
-    //     justify-content: center;
-    //     align-content: center;
-    //     align-items: center;
-    //     height: 100%;
-    // }
+    &--flex-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        height: 100%;
+    }
 }
