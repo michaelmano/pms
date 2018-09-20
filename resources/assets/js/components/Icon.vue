@@ -11,7 +11,7 @@ export default {
     },
     size: {
       type: String,
-      default: 'small'
+      default: 'sm'
     },
     fill: {
       type: String,
