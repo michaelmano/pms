@@ -25,10 +25,18 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jp(e*)g|svg)$/,
+        test: /\.(png|jp(e*)g)$/,
         use: [
           {
             loader: 'url-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
           },
         ],
       },
@@ -60,6 +68,11 @@ module.exports = {
       {
         from: resolve('resources/assets/images'),
         to: resolve('public/images'),
+        toType: 'dir',
+      },
+      {
+        from: resolve('resources/assets/icons'),
+        to: resolve('public/icons'),
         toType: 'dir',
       },
     ]),
