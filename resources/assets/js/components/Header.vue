@@ -1,5 +1,8 @@
 <template>
   <header class="Header" v-if="user">
+    <a href="/dashboard" title="Durian Project Management System">
+      <vue-icon name="durian" fill="alpha"/>
+    </a>
     <nav class="Navigation">
       <ul class="Navigation__list">
         <li class="Navigation__list-item">
