@@ -1,5 +1,15 @@
 .Form {
     width: 100%;
+
+    &--login {
+        max-width: 38rem;
+        margin: 0 auto;
+
+        & .Button {
+            width: 100%;
+            display: block;
+        }
+    }
 }
 
 .Form__fieldset {
