@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', 'HomeController@index')->name('index');
+Route::get('/', 'HomeController@index')->name('login');
 
 Route::namespace('Auth')
     ->prefix('auth')
