@@ -106,4 +106,18 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Project::class);
     }
+
+    /**
+     * The tasks the user is currently assigned.
+     */
+    public function tasks()
+    {
+        return $this->projects()
+            ->get()
+            ->map(function ($project) {
+                return $project
+                    ->tasks()
+                    ->get();
+            });
+    }
 }

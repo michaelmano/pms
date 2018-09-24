@@ -87,4 +87,23 @@ class UserTest extends TestCase
 
         $this->assertEquals($user->away->reason, $reason);
     }
+
+    /** @test */
+    public function a_user_can_have_tasks()
+    {
+        $user = $this->login();
+        $this->assertEquals(0, $user->tasks()->count());
+
+        // Create a project
+        $project = factory(\App\Project::class)->create();
+        // Create a task
+        $task = factory(\App\Task::class)->create([
+            'project_id' => $project->id,
+        ]);
+
+        // Add the user to the project.
+        $project->users()->attach($user);
+
+        $this->assertEquals(1, $user->tasks()->count());
+    }
 }
