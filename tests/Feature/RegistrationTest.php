@@ -28,14 +28,14 @@ class RegistrationTest extends TestCase
         $json_response
             ->assertStatus(401)
             ->assertJson([
-                'message' => 'Unauthenticated.',
+                'message' => 'Unauthorized.',
             ]);
     }
 
     /** @test */
     public function a_user_can_register_someone_else()
     {
-        $this->login();
+        $user = $this->login();
 
         $details = [
             'first_name' => 'Bob',
@@ -45,8 +45,17 @@ class RegistrationTest extends TestCase
             'password_confirmation' => 'password',
         ];
 
-        $json_response = $this->json('POST', '/auth/register', $details);
-        $json_response
+        $normal_user_response = $this->json('POST', '/auth/register', $details);
+        $normal_user_response
+            ->assertStatus(401)
+            ->assertJson([
+                'message' => 'Unauthorized.',
+            ]);
+
+        $user->roles()->attach(\App\Role::find(2));
+
+        $admin_user_response = $this->json('POST', '/auth/register', $details);
+        $admin_user_response
             ->assertStatus(200)
             ->assertJson([
                 'message' => 'Success.',

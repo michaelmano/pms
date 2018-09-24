@@ -45,7 +45,9 @@ abstract class TestCase extends BaseTestCase
             $user = factory(\App\User::class)->create();
         }
 
-        return $this->actingAs($user);
+        $this->actingAs($user);
+
+        return $user;
     }
 
 }
