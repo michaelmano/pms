@@ -33,7 +33,7 @@ class RegistrationTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_register_someone_else()
+    public function a_user_can_register_someone_else_but_they_have_to_be_admin_or_higher()
     {
         $user = $this->login();
 
